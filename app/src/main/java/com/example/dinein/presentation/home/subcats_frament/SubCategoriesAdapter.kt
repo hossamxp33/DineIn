@@ -7,14 +7,13 @@ import androidx.databinding.DataBindingUtil
 import androidx.recyclerview.widget.RecyclerView
 
 import com.codesroots.mac.cards.presentaion.mainfragment.viewmodel.MainViewModel
+import com.codesroots.mac.cards.presentaion.mainfragment.viewmodel.SubCategoryModel
 import com.example.dinein.R
-import com.example.dinein.databinding.CatsItemBinding
 import com.example.dinein.databinding.SubcategoriesItemBinding
-import com.example.dinein.models.Data
 import com.example.dinein.models.Subcategory
 import com.example.dinein.presentation.MainActivity
 
-class SubCategoriesAdapter(var viewModel: MainViewModel, var context : Context?, var data:List<Subcategory>) : RecyclerView.Adapter<CustomViewHolder>() {
+class SubCategoriesAdapter(var viewModel: SubCategoryModel, var context : Context?, var data:List<Subcategory>) : RecyclerView.Adapter<CustomViewHolder>() {
     override fun getItemCount(): Int {
 
         return  data.size
@@ -43,7 +42,7 @@ class CustomViewHolder (
     private val binding: SubcategoriesItemBinding
 ) : RecyclerView.ViewHolder(binding.root){
 
-    fun bind(position:Int,viewModel: MainViewModel, context: Context?, data: Subcategory) {
+    fun bind(position:Int, viewModel: SubCategoryModel, context: Context?, data: Subcategory) {
 
         binding.data = data
         binding.context = context as MainActivity?

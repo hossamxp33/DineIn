@@ -8,8 +8,8 @@ import androidx.annotation.RequiresApi
 import androidx.databinding.DataBindingUtil
 import com.example.dinein.R
 import com.example.dinein.databinding.ActivityMainBinding
-import com.example.dinein.presentation.home.cat_fragment.Categories_Fragment
-import com.example.dinein.presentation.home.subcats_frament.Items_Fragment
+import com.example.dinein.presentation.home.category_fragment.Categories_Fragment
+import com.example.dinein.presentation.home.subcats_frament.SubCats_Fragment
 import com.example.dinein.presentation.home.Top_Fragment
 
 
@@ -25,7 +25,7 @@ class MainActivity : AppCompatActivity() {
         val frg1 =
             Categories_Fragment()//create the fragment instance for the middle fragment
         val frg2 =
-            Items_Fragment()//create the fragment instance for the bottom fragment
+            SubCats_Fragment()//create the fragment instance for the bottom fragment
 
         val manager = supportFragmentManager//create an instance of fragment manager
 
