@@ -1,0 +1,94 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout
+        xmlns:android="http://schemas.android.com/apk/res/android"
+        xmlns:app="http://schemas.android.com/apk/res-auto"
+        xmlns:tools="http://schemas.android.com/tools">
+    <data>
+
+       </data>
+
+<androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="@color/gray_custom">
+
+
+    <FrameLayout
+        android:id="@+id/My_Container_1_ID"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_marginStart="8dp"
+        android:layout_marginTop="8dp"
+        android:layout_marginEnd="8dp"
+        android:background="@drawable/card_background"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHeight_percent=".3"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/toolBar"
+        app:layout_constraintWidth_percent="1">
+
+    </FrameLayout>
+
+
+    <FrameLayout
+        android:id="@+id/My_Container_2_ID"
+        android:layout_width="0dp"
+        android:layout_height="150dp"
+        android:layout_below="@+id/My_Container_1_ID"
+        android:layout_alignParentLeft="true"
+        android:layout_marginTop="16dp"
+        android:layout_marginEnd="8dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/My_Container_1_ID"
+        app:layout_constraintWidth_percent=".3" />
+
+    <FrameLayout
+        android:id="@+id/My_Container_3_ID"
+        android:layout_width="0dp"
+        android:layout_height="150dp"
+        android:layout_below="@+id/My_Container_2_ID"
+        android:layout_alignParentLeft="true"
+        android:layout_marginTop="16dp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/My_Container_1_ID"
+        app:layout_constraintWidth_percent=".65" />
+    <com.google.android.material.appbar.AppBarLayout
+            android:id="@+id/appBarLayout"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            app:layout_constraintBottom_toBottomOf="parent">
+
+
+    </com.google.android.material.appbar.AppBarLayout>
+
+    <androidx.appcompat.widget.Toolbar
+        android:id="@+id/toolBar"
+        android:layout_width="match_parent"
+        android:layout_height="?attr/actionBarSize"
+        android:background="@color/darkred"
+
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:popupTheme="@style/AppTheme.PopupOverlay">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center_horizontal"
+
+            android:fontFamily="@font/flat"
+            android:text="@string/app_name"
+            android:textColor="@color/white"
+            android:textSize="24sp"
+            android:textStyle="bold"
+            tools:layout_editor_absoluteX="176dp"
+            tools:layout_editor_absoluteY="18dp">
+
+        </TextView>
+
+    </androidx.appcompat.widget.Toolbar>
+
+</androidx.constraintlayout.widget.ConstraintLayout>
+</layout>
