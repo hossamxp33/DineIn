@@ -5,22 +5,17 @@
         xmlns:tools="http://schemas.android.com/tools">
     <data>
         <variable
-            name="index"
-            type="Integer"/>
+            name="data"
+            type="com.example.dinein.models.DataX"/>
         <variable
-                name="data"
-                type="com.example.dinein.models.Subcategory"/>
+            name="viewmodel"
+            type="com.codesroots.mac.cards.presentaion.mainfragment.viewmodel.SubCategoryModel"/>
         <variable
-                name="viewmodel"
-                type="com.codesroots.mac.cards.presentaion.mainfragment.viewmodel.MainViewModel"/>
-        <variable
-                name="Context"
-                type="com.example.dinein.presentation.MainActivity"/>
-
+            name="Context"
+            type="com.example.dinein.presentation.MainActivity"/>
         <variable
             name="listener"
             type="com.example.dinein.presentation.Handler"/>
-
     </data>
 
     <androidx.constraintlayout.widget.ConstraintLayout
@@ -38,7 +33,8 @@
             android:background="@drawable/card_background"
             app:layout_constraintLeft_toLeftOf="parent"
             app:layout_constraintRight_toRightOf="parent"
-            android:onClick="@{() -> listener.SwitchToPackages(Context,data.id)}"
+            android:onClick="@{() -> listener.AddToCart(viewmodel,data)}"
+
             app:layout_constraintTop_toTopOf="parent">
 
             <androidx.appcompat.widget.AppCompatImageView
@@ -75,7 +71,6 @@
             android:background="@drawable/bluereduisbackground"
             android:text="تفاصيل"
             android:padding="5dp"
-            android:onClick="@{() -> listener.SwitchToPackages(Context,data.id)}"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"

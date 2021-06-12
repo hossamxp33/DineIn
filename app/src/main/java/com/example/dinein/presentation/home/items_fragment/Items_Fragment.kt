@@ -1,4 +1,4 @@
-package com.example.dinein.presentation.home.subcats_frament
+package com.example.dinein.presentation.home.items_fragment
 
 import android.os.Bundle
 import android.view.LayoutInflater
@@ -12,22 +12,23 @@ import androidx.recyclerview.widget.GridLayoutManager
 import com.codesroots.mac.cards.presentaion.mainfragment.viewmodel.SubCategoryModel
 import com.example.dinein.R
 import com.example.dinein.databinding.ItemsFragmentBinding
+import com.example.dinein.models.DataX
 import com.example.dinein.models.Subcategory
 import com.example.dinein.models.sub_categories
 import com.example.dinein.presentation.home.viewmodel.SubViewModelFactory
 
-class SubCats_Fragment : Fragment(){
+class Items_Fragment : Fragment(){
+
     lateinit var viewModel: SubCategoryModel
-    lateinit var MainAdapter: SubCategoriesAdapter
+    lateinit var MainAdapter: ItemsAdapter
 
     var data: ArrayList<Subcategory>? = null
-    var dataray = ArrayList<Subcategory>()
-     var mainData: sub_categories? = null
-    var id : Int ? = null
+    var dataray = ArrayList<DataX>()
+    var mainData: sub_categories? = null
     private fun getViewModelFactory(): SubViewModelFactory {
         return SubViewModelFactory(this.activity!!.application)
     }
-    var index : Int =  0
+    var index : Int =  8
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
 
         var view: ItemsFragmentBinding =
@@ -36,44 +37,28 @@ class SubCats_Fragment : Fragment(){
                 R.layout.items_fragment, container, false
             )
 
-
+        val subCategoryeId = arguments?.getInt("cat_id")
 
         viewModel = ViewModelProviders.of(requireActivity(), getViewModelFactory()).get(SubCategoryModel::class.java)
 
-
-        viewModel.Get_Categories()
-
+        viewModel.Get_Items(subCategoryeId!!)
 
 
+        viewModel.ItemsResponesLD?.observe(this , Observer {
 
-        viewModel.subCategoriesResponseLD?.observe(this , Observer {
+            dataray.addAll(it!!.data)
 
-            dataray.addAll(it!!.data.get(index).subcategories)
-
-            MainAdapter = SubCategoriesAdapter( viewModel,context, dataray)
+            MainAdapter = ItemsAdapter( viewModel,context, dataray)
 
             view.categoriesRecycle.adapter = MainAdapter;
 
             view.categoriesRecycle.layoutManager = GridLayoutManager(context,4)
 
-            mainData  = it
-
+            //      mainData  = it
             MainAdapter.notifyDataSetChanged()
 
         })
-
-        SwitchingCategories()
 
         return view.root
-}
-
-
-    fun SwitchingCategories(){
-        viewModel.ItemIndex!!.observe(this,androidx.lifecycle.Observer {
-            dataray.clear()
-            dataray.addAll(mainData!!.data.get(it).subcategories)
-            MainAdapter.notifyDataSetChanged()
-
-        })
     }
 }

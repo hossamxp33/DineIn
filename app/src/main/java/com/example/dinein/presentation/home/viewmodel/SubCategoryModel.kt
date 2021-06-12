@@ -1,28 +1,14 @@
 package com.codesroots.mac.cards.presentaion.mainfragment.viewmodel
 
-import android.widget.TextView
-import androidx.appcompat.widget.AppCompatImageView
-import androidx.core.content.ContextCompat
-import androidx.databinding.BindingAdapter
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
-import com.bumptech.glide.Glide
 import com.codesroots.mac.firstkotlon.DataLayer.Repo.DataRepo
 import io.reactivex.disposables.CompositeDisposable
-import java.text.SimpleDateFormat
 import java.util.*
-import android.text.Editable
-import android.text.TextWatcher
-import androidx.databinding.BaseObservable
-import android.graphics.Color
 import com.codesroots.mac.firstkotlon.DataLayer.ApiService.APIServices
-import com.example.dinein.R
-import com.example.dinein.models.item_categories
-
-
-
-
-
+import com.example.dinein.models.DataX
+import com.example.dinein.models.Items
+import com.example.dinein.models.sub_categories
 
 
 class SubCategoryModel(apiService: APIServices) : ViewModel() {
@@ -32,27 +18,38 @@ class SubCategoryModel(apiService: APIServices) : ViewModel() {
 
     var SpinnerData : Currency? = null
 
-    var ItemCategoriesResponseLD : MutableLiveData <item_categories>? = null
+    var subCategoriesResponseLD : MutableLiveData <sub_categories>? = null
     var ItemIndex = MutableLiveData<Int>()
+    var ItemsResponesLD : MutableLiveData<Items>? = null
+    var ItemData= MutableLiveData <DataX>()
 
 
     init {
         ItemIndex = MutableLiveData()
-        ItemCategoriesResponseLD = MutableLiveData()
+        subCategoriesResponseLD = MutableLiveData()
+        ItemsResponesLD = MutableLiveData()
+        ItemData = MutableLiveData()
     }
 
 
 
     fun  Get_Categories(){
-        DateRepoCompnay.Get_Data_Categories(ItemCategoriesResponseLD)
+        DateRepoCompnay.Get_Data_Categories(subCategoriesResponseLD)
     }
+    fun  Get_Items(id : Int){
+        DateRepoCompnay.GetItemsData(id,ItemsResponesLD)
+    }
+
+
 
     fun SwtichingCategories(index: Int?) {
-
         ItemIndex.postValue(index)
-
     }
 
 
+fun GetItemsData(dataX: DataX){
+
+    ItemData?.postValue(dataX)
+}
 
 }

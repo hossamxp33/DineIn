@@ -28,6 +28,7 @@ public class SubViewModelFactory implements ViewModelProvider.Factory {
     public <T extends ViewModel> T create(@NonNull Class<T> modelClass) {
    if(modelClass == SubCategoryModel.class)
          {
+
              return (T) new SubCategoryModel(getApiService());
          }
 

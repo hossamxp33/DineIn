@@ -1,5 +1,5 @@
 package com.example.dinein.models
 
-data class item_categories(
+data class sub_categories(
     val `data`: List<Data>
 )

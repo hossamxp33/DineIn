@@ -17,7 +17,7 @@ import androidx.databinding.BaseObservable
 import android.graphics.Color
 import com.codesroots.mac.firstkotlon.DataLayer.ApiService.APIServices
 import com.example.dinein.R
-import com.example.dinein.models.item_categories
+import com.example.dinein.models.sub_categories
 
 
 class BindedValue : BaseObservable() {
@@ -120,17 +120,17 @@ class MainViewModel(apiService: APIServices) : ViewModel() {
 
     var SpinnerData : Currency? = null
 
-    var ItemCategoriesResponseLD : MutableLiveData <item_categories>? = null
+    var subCategoriesResponseLD : MutableLiveData <sub_categories>? = null
 
 
     init {
-        ItemCategoriesResponseLD = MutableLiveData()
+        subCategoriesResponseLD = MutableLiveData()
     }
 
 
 
     fun  Get_Categories(){
-        DateRepoCompnay.Get_Data_Categories(ItemCategoriesResponseLD)
+        DateRepoCompnay.Get_Data_Categories(subCategoriesResponseLD)
     }
 
 
