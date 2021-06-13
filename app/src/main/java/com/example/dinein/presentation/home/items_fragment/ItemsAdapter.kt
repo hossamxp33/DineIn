@@ -6,7 +6,6 @@ import android.view.ViewGroup
 import androidx.databinding.DataBindingUtil
 import androidx.recyclerview.widget.RecyclerView
 
-import com.codesroots.mac.cards.presentaion.mainfragment.viewmodel.MainViewModel
 import com.codesroots.mac.cards.presentaion.mainfragment.viewmodel.SubCategoryModel
 import com.example.dinein.R
 import com.example.dinein.databinding.ItemsAdapterBinding

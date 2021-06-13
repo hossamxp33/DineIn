@@ -1,15 +1,17 @@
 package com.example.dinein.presentation
 
 import android.content.Context
+import android.content.Intent
 import android.os.Build
 import android.os.Bundle
 import androidx.annotation.RequiresApi
-import com.codesroots.mac.cards.presentaion.mainfragment.viewmodel.MainViewModel
+import androidx.core.content.ContextCompat.startActivity
 import com.codesroots.mac.cards.presentaion.mainfragment.viewmodel.SubCategoryModel
 import com.example.dinein.R
 import com.example.dinein.models.DataX
 import com.example.dinein.presentation.home.items_fragment.Items_Fragment
 import com.example.dinein.presentation.home.subcats_frament.SubCats_Fragment
+import com.example.dinein.presentation.tables_activity.Tables_Activity
 
 class Handler {
 
@@ -25,6 +27,14 @@ class Handler {
             .addToBackStack(null)
             .commit()
     }
+
+    fun SwitchToMainActivity(context: Context) {
+        val homeIntent = Intent(context,MainActivity()::class.java)
+
+        (context as Tables_Activity).startActivity(homeIntent)
+
+    }
+
 
     fun AddToCart(viewmodel: SubCategoryModel, data : DataX) {
 

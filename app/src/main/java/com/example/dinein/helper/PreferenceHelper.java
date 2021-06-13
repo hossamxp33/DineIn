@@ -33,6 +33,7 @@ public class PreferenceHelper {
     private final static String Color_ARRAY = "Color_ARRAY";
     private final static String URL_Base = "URL_Base";
     private final static String PHONE_NUM = "PHONE_NUM";
+    private static String AuthId = "auth";
 
     private final static String Doller_value = "Doller_value";
     private final static String IN_OMAN = "IN_OMAN";
@@ -69,6 +70,18 @@ public class PreferenceHelper {
         Editor edit = app_prefs.edit();
         edit.putString(PaymentToken, API_TOKEN);
         edit.commit();
+        edit.apply();
+    }
+    public static String getAuthId() {
+
+        return app_prefs.getString(AuthId,"0");
+    }
+
+    public static void setAuthId(String API_TOKEN, Context context) {
+        app_prefs = context.getSharedPreferences(app_ref,
+                Context.MODE_PRIVATE);
+        Editor edit = app_prefs.edit();
+        edit.putString(AuthId, API_TOKEN);
         edit.apply();
     }
     public static String getPaymentToken() {

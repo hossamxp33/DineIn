@@ -9,11 +9,11 @@ import androidx.fragment.app.Fragment
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProviders
 import androidx.recyclerview.widget.LinearLayoutManager
-import com.codesroots.mac.cards.presentaion.mainfragment.viewmodel.MainViewModel
 import com.codesroots.mac.cards.presentaion.mainfragment.viewmodel.SubCategoryModel
 import com.example.dinein.R
 import com.example.dinein.databinding.CategoriesFragmentBinding
 import com.example.dinein.models.Data
+import com.example.dinein.presentation.home.viewmodel.MainViewModel
 import com.example.dinein.presentation.home.viewmodel.MainViewModelFactory
 import com.example.dinein.presentation.home.viewmodel.SubViewModelFactory
 import kotlinx.android.synthetic.main.items_fragment.*

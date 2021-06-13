@@ -6,7 +6,6 @@ import androidx.annotation.NonNull;
 import androidx.lifecycle.ViewModel;
 import androidx.lifecycle.ViewModelProvider;
 
-import com.codesroots.mac.cards.presentaion.mainfragment.viewmodel.MainViewModel;
 import com.codesroots.mac.cards.presentaion.mainfragment.viewmodel.SubCategoryModel;
 import com.codesroots.mac.firstkotlon.DataLayer.ApiService.APIServices;
 import com.example.dinein.data_layer.ApiClient;

@@ -1,4 +1,4 @@
-package com.codesroots.mac.cards.presentaion.mainfragment.viewmodel
+package com.example.dinein.presentation.home.viewmodel
 
 import android.widget.TextView
 import androidx.appcompat.widget.AppCompatImageView
