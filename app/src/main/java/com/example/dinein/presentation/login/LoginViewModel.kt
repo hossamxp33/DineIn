@@ -28,6 +28,10 @@ class LoginViewModel : ViewModel() {
     fun LoginFirstTime(username:String,password:String) {
         DateRepoCompnay.LoginFirstTime(username,password,loginResponseLD)
     }
+
+
+
+
     fun Login(username:String,password:String) {
         DateRepoCompnay.Login(username,password,loginResponseLD)
   }

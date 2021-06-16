@@ -1,5 +1,6 @@
 package com.example.dinein.presentation.tables_activity
 
+import android.content.Intent
 import android.content.pm.ActivityInfo
 import android.os.Bundle
 
@@ -12,6 +13,7 @@ import com.example.dinein.R
 
 import com.example.dinein.databinding.TablesActivityBinding
 import com.example.dinein.helper.PreferenceHelper
+import com.example.dinein.presentation.MainActivity
 import com.example.dinein.presentation.home.viewmodel.MainViewModel
 import com.example.dinein.presentation.home.viewmodel.MainViewModelFactory
 
@@ -20,11 +22,12 @@ import kotlinx.android.synthetic.main.items_fragment.*
 
 class Tables_Activity : AppCompatActivity() {
     lateinit var MainAdapter: TablesAdapter
-    lateinit var viewModel: TablesViewModel
+    lateinit var viewModel: MainViewModel
 
+    var orderId:Int?=null
 
-    private fun getMainViewModelFactory(): TablesViewModelFactory {
-        return TablesViewModelFactory(this.application)
+    private fun getMainViewModelFactory(): MainViewModelFactory {
+        return MainViewModelFactory(this.application)
     }
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -34,19 +37,39 @@ class Tables_Activity : AppCompatActivity() {
         setRequestedOrientation(ActivityInfo.SCREEN_ORIENTATION_LANDSCAPE);
 
         PreferenceHelper(this)
-        viewModel = ViewModelProviders.of(this, getMainViewModelFactory()).get(
-            TablesViewModel::class.java)
 
+        viewModel = ViewModelProviders.of(this, getMainViewModelFactory()).get(MainViewModel::class.java)
+
+
+
+
+
+
+
+        /////////     Get Tables
         viewModel.Get_Tables()
         viewModel.TablesResponseLD?.observe(this , Observer {
             MainAdapter = TablesAdapter(viewModel,this, it.data)
             categories_recycle.adapter = MainAdapter;
             categories_recycle.layoutManager = GridLayoutManager(this, 3)
 
+
+
+
         })
 
 
+        /////////////
 
+        viewModel.AddOrderResponseLD?.observe(this, Observer {
+
+            val homeIntent = Intent(this, MainActivity()::class.java)
+            homeIntent.putExtra("order_id",it.query.get(0).id)
+            startActivity(homeIntent)
+
+
+
+        })
 
 
     }

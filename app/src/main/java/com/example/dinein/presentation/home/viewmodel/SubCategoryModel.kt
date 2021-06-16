@@ -15,29 +15,24 @@ class SubCategoryModel(apiService: APIServices) : ViewModel() {
 
     var DateRepoCompnay: DataRepo = DataRepo()
      var mCompositeDisposable = CompositeDisposable()
-
     var SpinnerData : Currency? = null
-
     var subCategoriesResponseLD : MutableLiveData <sub_categories>? = null
     var ItemIndex = MutableLiveData<Int>()
     var ItemsResponesLD : MutableLiveData<Items>? = null
-    var ItemData= MutableLiveData <DataX>()
 
 
     init {
         ItemIndex = MutableLiveData()
         subCategoriesResponseLD = MutableLiveData()
         ItemsResponesLD = MutableLiveData()
-        ItemData = MutableLiveData()
+
+
     }
 
 
 
     fun  Get_Categories(){
         DateRepoCompnay.Get_Data_Categories(subCategoriesResponseLD)
-    }
-    fun  Get_Items(id : Int){
-        DateRepoCompnay.GetItemsData(id,ItemsResponesLD)
     }
 
 
@@ -47,9 +42,5 @@ class SubCategoryModel(apiService: APIServices) : ViewModel() {
     }
 
 
-fun GetItemsData(dataX: DataX){
-
-    ItemData?.postValue(dataX)
-}
 
 }

@@ -15,9 +15,10 @@ import com.example.dinein.models.DataX
 import com.example.dinein.models.Subcategory
 import com.example.dinein.presentation.Handler
 import com.example.dinein.presentation.MainActivity
+import com.example.dinein.presentation.home.viewmodel.MainViewModel
 import io.socket.engineio.client.HandshakeData
 
-class ItemsAdapter(var viewModel: SubCategoryModel, var context : Context?, var data:List<DataX>) : RecyclerView.Adapter<CustomViewHolder>() {
+class ItemsAdapter(var viewModel: MainViewModel, var context : Context?, var data:List<DataX>) : RecyclerView.Adapter<CustomViewHolder>() {
     override fun getItemCount(): Int {
 
         return  data.size
@@ -47,7 +48,7 @@ class CustomViewHolder (
     public val binding: ItemsAdapterBinding
 ) : RecyclerView.ViewHolder(binding.root){
 
-    fun bind(position:Int, viewModel: SubCategoryModel, context: Context?, data: DataX) {
+    fun bind(position:Int, viewModel: MainViewModel, context: Context?, data: DataX) {
 
         binding.data = data
         binding.context = context as MainActivity?

@@ -64,8 +64,6 @@ class LoginFragment : AppCompatActivity() {
         viewModel.loginResponseLD?.observe(this , Observer {
             "سجل".snack(window.decorView.rootView)
 
-
-
 //                PreferenceHelper.setToken(it.taken,this)
              PreferenceHelper.setToken(it.data!!.token)
 

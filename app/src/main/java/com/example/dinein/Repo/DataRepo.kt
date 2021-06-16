@@ -5,10 +5,7 @@ import androidx.lifecycle.MutableLiveData
 import com.codesroots.mac.firstkotlon.DataLayer.ApiService.APIServices
 import com.example.dinein.data_layer.ApiClient
 import com.example.dinein.helper.PreferenceHelper
-import com.example.dinein.models.Items
-import com.example.dinein.models.TablesData
-import com.example.dinein.models.User
-import com.example.dinein.models.sub_categories
+import com.example.dinein.models.*
 
 import io.reactivex.android.schedulers.AndroidSchedulers
 import io.reactivex.schedulers.Schedulers
@@ -22,6 +19,22 @@ class  DataRepo {
     @SuppressLint("CheckResult")
     fun Get_Data_Categories(livedata: MutableLiveData<sub_categories>?) {
         getServergetway().GetData()
+            .subscribeOn(Schedulers.io())
+            .observeOn(AndroidSchedulers.mainThread())
+            .map { data -> data }
+            .subscribe(
+                { books ->
+                    livedata?.postValue(books)
+                },
+                { error ->
+
+                }
+            )
+    }
+    //GetTextSliderData
+    @SuppressLint("CheckResult")
+    fun GetDataForSearch(livedata: MutableLiveData<AllData>?) {
+        getServergetway().GetAllDataForSearch()
             .subscribeOn(Schedulers.io())
             .observeOn(AndroidSchedulers.mainThread())
             .map { data -> data }
@@ -67,6 +80,24 @@ class  DataRepo {
                 }
             )
     }
+    @SuppressLint("CheckResult")
+    fun getDetailsByOrderId(id:Int,livedata: MutableLiveData<DetailsByOrderId>?) {
+
+        getServergetway().getDetailsByOrderId(id)
+            .subscribeOn(Schedulers.io())
+            .observeOn(AndroidSchedulers.mainThread())
+            .map { data -> data }
+            .subscribe(
+                { books ->
+                    livedata?.postValue(books)
+                },
+                { error ->
+                    print(error)
+                }
+            )
+    }
+    /////////getDetailsByOrderId
+
     fun Login(username:String,password:String,livedata: MutableLiveData<User>?) {
 
         getServergetway().userlogin(username,password)
@@ -86,6 +117,24 @@ class  DataRepo {
     fun LoginFirstTime(username:String,password:String,livedata: MutableLiveData<User>?) {
 
         getServergetway().LoginFirstTime(username,password)
+            .subscribeOn(Schedulers.io())
+            .observeOn(AndroidSchedulers.mainThread())
+            .map { data -> data }
+            .subscribe(
+                { books ->
+                    livedata?.postValue(books)
+                },
+                { error ->
+
+                }
+            )
+    }
+
+
+    //AddOrder
+    fun AddOrder(branch_id:Int,table_id:Int,total:Int,typeorder:Int,user_id:Int,waiter_id:Int,livedata: MutableLiveData<DetailsByOrderId>?) {
+
+        getServergetway().AddOrder(branch_id,table_id,total,typeorder,user_id,waiter_id)
             .subscribeOn(Schedulers.io())
             .observeOn(AndroidSchedulers.mainThread())
             .map { data -> data }

@@ -15,18 +15,20 @@ import com.example.dinein.databinding.ItemsFragmentBinding
 import com.example.dinein.models.DataX
 import com.example.dinein.models.Subcategory
 import com.example.dinein.models.sub_categories
+import com.example.dinein.presentation.home.viewmodel.MainViewModel
+import com.example.dinein.presentation.home.viewmodel.MainViewModelFactory
 import com.example.dinein.presentation.home.viewmodel.SubViewModelFactory
 
 class Items_Fragment : Fragment(){
 
-    lateinit var viewModel: SubCategoryModel
+    lateinit var viewModel: MainViewModel
     lateinit var MainAdapter: ItemsAdapter
 
     var data: ArrayList<Subcategory>? = null
     var dataray = ArrayList<DataX>()
     var mainData: sub_categories? = null
-    private fun getViewModelFactory(): SubViewModelFactory {
-        return SubViewModelFactory(this.activity!!.application)
+    private fun getViewModelFactory(): MainViewModelFactory {
+        return MainViewModelFactory(this.activity!!.application)
     }
     var index : Int =  8
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
@@ -39,7 +41,7 @@ class Items_Fragment : Fragment(){
 
         val subCategoryeId = arguments?.getInt("cat_id")
 
-        viewModel = ViewModelProviders.of(requireActivity(), getViewModelFactory()).get(SubCategoryModel::class.java)
+        viewModel = ViewModelProviders.of(requireActivity(), getViewModelFactory()).get(MainViewModel::class.java)
 
         viewModel.Get_Items(subCategoryeId!!)
 

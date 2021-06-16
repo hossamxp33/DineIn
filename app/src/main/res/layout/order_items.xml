@@ -9,7 +9,7 @@
             type="com.example.dinein.models.DataX"/>
         <variable
                 name="viewmodel"
-                type="com.codesroots.mac.cards.presentaion.mainfragment.viewmodel.SubCategoryModel"/>
+                type="com.example.dinein.presentation.home.viewmodel.MainViewModel"/>
         <variable
                 name="Context"
                 type="com.example.dinein.presentation.MainActivity"/>

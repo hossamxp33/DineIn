@@ -17,7 +17,7 @@ import androidx.databinding.BaseObservable
 import android.graphics.Color
 import com.codesroots.mac.firstkotlon.DataLayer.ApiService.APIServices
 import com.example.dinein.R
-import com.example.dinein.models.sub_categories
+import com.example.dinein.models.*
 
 
 class BindedValue : BaseObservable() {
@@ -121,11 +121,30 @@ class MainViewModel(apiService: APIServices) : ViewModel() {
     var SpinnerData : Currency? = null
 
     var subCategoriesResponseLD : MutableLiveData <sub_categories>? = null
-
+    var SearchResponseLD : MutableLiveData <AllData>? = null
+    var ItemData= MutableLiveData <DataX>()
+    var SearchKey = MutableLiveData<String>()
+    var AddOrderResponseLD : MutableLiveData <DetailsByOrderId>? = null
+    var TablesResponseLD : MutableLiveData <TablesData>? = null
+    var ItemsResponesLD : MutableLiveData<Items>? = null
+    var OrdersByIdResponesLD : MutableLiveData<DetailsByOrderId>? = null
+    var ItemIndex = MutableLiveData<Int>()
 
     init {
         subCategoriesResponseLD = MutableLiveData()
+        SearchResponseLD = MutableLiveData()
+        ItemData = MutableLiveData()
+        SearchKey = MutableLiveData()
+        AddOrderResponseLD = MutableLiveData()
+        TablesResponseLD = MutableLiveData()
+        ItemsResponesLD = MutableLiveData()
+        OrdersByIdResponesLD= MutableLiveData()
+        ItemIndex = MutableLiveData()
+
+
+
     }
+
 
 
 
@@ -133,7 +152,41 @@ class MainViewModel(apiService: APIServices) : ViewModel() {
         DateRepoCompnay.Get_Data_Categories(subCategoriesResponseLD)
     }
 
+    fun  Get_Search_Data(){
+        DateRepoCompnay.GetDataForSearch(SearchResponseLD)
+    }
+
+    fun  Get_Tables(){
+        DateRepoCompnay.Get_Tables(TablesResponseLD)
+    }
+
+    fun  Get_Items(id : Int){
+        DateRepoCompnay.GetItemsData(id,ItemsResponesLD)
+    }
+
+    ///AddOrder
+    fun AddOrder(branch_id:Int,table_id:Int,total:Int,typeorder:Int,user_id:Int,waiter_id:Int) {
+        DateRepoCompnay.AddOrder(branch_id,table_id,total,typeorder,user_id,waiter_id,AddOrderResponseLD)
+    }
+
+    //////getDetailsByOrderId
+
+    fun  getDetailsByOrderId(id : Int){
+        DateRepoCompnay.getDetailsByOrderId(id,OrdersByIdResponesLD)
+    }
 
 
+    fun GetItemsData(dataX: DataX){
+
+        ItemData.postValue(dataX)
+    }
+    fun  SendSearhKey(id : String){
+        SearchKey.postValue(id)
+    }
+
+
+    fun SwtichingCategories(index: Int?) {
+        ItemIndex.postValue(index)
+    }
 
 }

@@ -89,7 +89,7 @@
     <string name="repassword">Re-Password</string>
     <string name="requestnotallow">You Can not request more than available quentity</string>
     <string name="search">search about delivery place</string>
-    <string name="searchabout">search by products</string>
+    <string name="searchabout">search by name</string>
     <string name="send">confirm</string>
     <string name="sendrate">send</string>
     <string name="read_more">Read More....</string>

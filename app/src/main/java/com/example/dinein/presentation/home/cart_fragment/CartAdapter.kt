@@ -11,8 +11,9 @@ import com.example.dinein.R
 import com.example.dinein.databinding.OrderItemsBinding
 import com.example.dinein.models.DataX
 import com.example.dinein.presentation.MainActivity
+import com.example.dinein.presentation.home.viewmodel.MainViewModel
 
-class CartAdapter(var viewModel: SubCategoryModel, var context : Context?, var data:List<DataX>) : RecyclerView.Adapter<CustomViewHolder>() {
+class CartAdapter(var viewModel: MainViewModel, var context : Context?, var data:List<DataX>) : RecyclerView.Adapter<CustomViewHolder>() {
     override fun getItemCount(): Int {
 
         return  data.size
@@ -41,7 +42,7 @@ class CustomViewHolder (
     private val binding: OrderItemsBinding
 ) : RecyclerView.ViewHolder(binding.root){
 
-    fun bind(position:Int, viewModel: SubCategoryModel, context: Context?, data: DataX) {
+    fun bind(position:Int, viewModel: MainViewModel, context: Context?, data: DataX) {
 
         binding.data = data
         binding.viewmodel = viewModel

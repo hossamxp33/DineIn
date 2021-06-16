@@ -5,24 +5,16 @@ data class Items(
 )
 
 data class DataX(
-    val created: String,
-    val description: String,
-    val id: Int,
-    val item_photo: List<Any>,
-    val modified: String,
-    val name: String,
-    val name_en: String,
-    val photo: String,
-    val price: Int,
-    val subcategory_id: Int,
-    val tax: Tax,
-    val tax_id: Int
-)
-data class Tax(
-    val created: Any,
-    val id: Int,
-    val modified: String,
-    val name: String,
-    val percentage: Int,
-    val service: Int
+    val created: String? = null,
+    val description: String? = null,
+    val id: Int? = null,
+    val item_photo: List<Any>? = null,
+    val modified: String? = null,
+    val name: String? = null,
+    val name_en: String? = null,
+    val photo: String? = null,
+    val price: Int? = null,
+    val subcategory_id: Int? = null,
+    val tax: Tax? = null,
+    val tax_id: Int? = null
 )
