@@ -22,6 +22,7 @@ import com.example.dinein.models.sub_categories
 import com.example.dinein.presentation.home.viewmodel.MainViewModel
 import com.example.dinein.presentation.home.viewmodel.MainViewModelFactory
 import com.example.dinein.presentation.home.viewmodel.SubViewModelFactory
+import java.lang.Exception
 
 class CartFragment : Fragment(){
 
@@ -60,21 +61,27 @@ val OrderId = arguments!!.getInt("order_id")
             index = it
 
         })
-             viewModel.OrdersByIdResponesLD?.observe(this, Observer {
 
-                 order_data = it.query.get(index).orderdetails as ArrayList
+            viewModel.OrdersByIdResponesLD?.observe(this, Observer {
+                try {
+                order_data = it.query.get(index).orderdetails as ArrayList
 
                 for (order_datas in order_data) {
-                    dataray.add(DataX(price = order_datas.item.price,name = order_datas.item.name))
+
+                    dataray.add(DataX(price = order_datas.item.price,name = order_datas.item.name,tax = order_datas.item.tax))
 
                 }
-                 MainAdapter = CartAdapter( viewModel,context, dataray)
+                MainAdapter = CartAdapter( viewModel,context, dataray)
 
-                 view.departments.adapter = MainAdapter;
+                view.departments.adapter = MainAdapter;
 
-                 view.departments.layoutManager = GridLayoutManager(context,1)
+                view.departments.layoutManager = GridLayoutManager(context,1)
+                }catch (e:Exception){
 
-             })
+                }
+            })
+
+
 
 
 

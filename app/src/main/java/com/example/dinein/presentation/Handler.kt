@@ -13,6 +13,7 @@ import com.example.dinein.R
 import com.example.dinein.models.DataX
 import com.example.dinein.models.Tables
 import com.example.dinein.presentation.home.items_fragment.Items_Fragment
+import com.example.dinein.presentation.home.product_details.Product_details_Fragment
 import com.example.dinein.presentation.home.subcats_frament.SubCats_Fragment
 import com.example.dinein.presentation.home.viewmodel.MainViewModel
 import com.example.dinein.presentation.tables_activity.Tables_Activity
@@ -32,6 +33,19 @@ class Handler {
             .commit()
     }
 
+    ///// Show Product Details
+    @RequiresApi(Build.VERSION_CODES.N)
+    fun SwitchToDetails(context: Context, item_id :Int) {
+        val bundle = Bundle()
+        //  bundle.putParcelable("cliObj" ,clients[position] )
+        val frag = Product_details_Fragment()
+        frag.arguments = bundle
+        bundle.putInt("item_id" , item_id)
+        ( context as MainActivity).supportFragmentManager.beginTransaction().setCustomAnimations(R.anim.ttb, 0, 0,0)
+            .replace(R.id.My_Container_3_ID, frag)
+            .addToBackStack(null)
+            .commit()
+    }
     fun SwitchToMainActivity(context: Context, data: Tables, viewModel: MainViewModel) {
         val bundle = Bundle()
 

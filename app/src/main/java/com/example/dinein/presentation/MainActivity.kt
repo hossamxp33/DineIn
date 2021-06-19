@@ -1,6 +1,7 @@
 package com.example.dinein.presentation
 
 import android.annotation.TargetApi
+import android.content.pm.ActivityInfo
 import android.os.Build
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
@@ -32,6 +33,7 @@ import org.jetbrains.anko.activityManager
 class MainActivity : AppCompatActivity() {
     @TargetApi(Build.VERSION_CODES.O)
     @RequiresApi(Build.VERSION_CODES.O)
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
          val companiesAdapter:SearchAdapter ? =null
@@ -41,6 +43,7 @@ class MainActivity : AppCompatActivity() {
         fun getViewModelFactory(): MainViewModelFactory {
             return MainViewModelFactory(this.application)
         }
+
         val binding = DataBindingUtil.setContentView<ActivityMainBinding>(this, com.example.dinein.R.layout.activity_main)
        // binding.context = this
 

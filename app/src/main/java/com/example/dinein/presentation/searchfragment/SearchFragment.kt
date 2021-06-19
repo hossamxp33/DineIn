@@ -44,23 +44,21 @@ class SearchFragment : Fragment() {
 
             if (page == 1 ) {
                 productList = ArrayList(it.data)
-                if (productList.size > 0) {
+                if (productList.size > 0 ) {
                     MainAdapter = SearchAdapter(viewModel, context, it.data)
-
                     view.recyler.layoutManager = GridLayoutManager(context,3)
                     view.recyler.adapter = MainAdapter;
                     progress = prog
                     progress.setVisibility(View.GONE)
-
                     viewModel.SearchKey.observe(this.viewLifecycleOwner,androidx.lifecycle.Observer {
                         MainAdapter.getFilter().filter(it)
 
                     })
                 } else {
-
-                    not.visibility=View.VISIBLE
                     progress = prog
                     progress.setVisibility(View.GONE)
+                    not.visibility=View.VISIBLE
+
                 }
             }
         })

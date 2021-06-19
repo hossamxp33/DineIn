@@ -18,6 +18,7 @@ import com.example.dinein.presentation.home.viewmodel.MainViewModel
 import com.example.dinein.presentation.home.viewmodel.MainViewModelFactory
 
 import kotlinx.android.synthetic.main.items_fragment.*
+import java.lang.Exception
 
 
 class Tables_Activity : AppCompatActivity() {
@@ -62,13 +63,14 @@ class Tables_Activity : AppCompatActivity() {
         /////////////
 
         viewModel.AddOrderResponseLD?.observe(this, Observer {
-
             val homeIntent = Intent(this, MainActivity()::class.java)
-            homeIntent.putExtra("order_id",it.query.get(0).id)
+           try {
+               homeIntent.putExtra("order_id",it.query.get(0).id)
+
+           }catch (e:Exception){
+
+           }
             startActivity(homeIntent)
-
-
-
         })
 
 

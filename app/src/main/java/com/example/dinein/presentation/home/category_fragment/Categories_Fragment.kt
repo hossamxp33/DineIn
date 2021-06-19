@@ -21,7 +21,6 @@ import kotlinx.android.synthetic.main.items_fragment.*
 class Categories_Fragment : Fragment(){
     lateinit var viewModel: MainViewModel
     lateinit var MainAdapter: CategoriesAdapter
-    lateinit   var subCatViewModel: SubCategoryModel
     private fun getViewModelFactory(): SubViewModelFactory {
         return SubViewModelFactory(this.activity!!.application)
     }
@@ -41,19 +40,18 @@ class Categories_Fragment : Fragment(){
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         viewModel = ViewModelProviders.of(requireActivity(), getMainViewModelFactory()).get(MainViewModel::class.java)
-        subCatViewModel = ViewModelProviders.of(requireActivity(), getViewModelFactory()).get(SubCategoryModel::class.java)
 
         viewModel.Get_Categories()
 
         viewModel.subCategoriesResponseLD?.observe(this , Observer {
-            MainAdapter = CategoriesAdapter( subCatViewModel,viewModel,context, it.data)
+            MainAdapter = CategoriesAdapter(viewModel,context, it.data)
             categories_recycle.adapter = MainAdapter;
             categories_recycle.layoutManager = LinearLayoutManager(context)
 
         })
 
 
-        subCatViewModel.ItemIndex.observe(this.viewLifecycleOwner,androidx.lifecycle.Observer {
+        viewModel.ItemIndex.observe(this.viewLifecycleOwner,androidx.lifecycle.Observer {
 
             index = it
 

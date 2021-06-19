@@ -69,7 +69,7 @@ class SubCats_Fragment : Fragment(){
 
 
     fun SwitchingCategories(){
-        viewModel.ItemIndex!!.observe(this,androidx.lifecycle.Observer {
+        viewModel.ItemIndex.observe(this,androidx.lifecycle.Observer {
             dataray.clear()
             dataray.addAll(mainData!!.data.get(it).subcategories)
             MainAdapter.notifyDataSetChanged()

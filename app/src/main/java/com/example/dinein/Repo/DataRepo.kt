@@ -80,6 +80,24 @@ class  DataRepo {
                 }
             )
     }
+    /////////getProductDetails
+    @SuppressLint("CheckResult")
+    fun getProductDetails(item_id:Int,user_id: Int,livedata: MutableLiveData<ProductDetails>?) {
+
+        getServergetway().getProductDetails(item_id,user_id)
+            .subscribeOn(Schedulers.io())
+            .observeOn(AndroidSchedulers.mainThread())
+            .map { data -> data }
+            .subscribe(
+                { books ->
+                    livedata?.postValue(books)
+                },
+                { error ->
+                    print(error)
+                }
+            )
+    }
+
     @SuppressLint("CheckResult")
     fun getDetailsByOrderId(id:Int,livedata: MutableLiveData<DetailsByOrderId>?) {
 

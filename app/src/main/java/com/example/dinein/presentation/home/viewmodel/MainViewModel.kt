@@ -129,6 +129,8 @@ class MainViewModel(apiService: APIServices) : ViewModel() {
     var ItemsResponesLD : MutableLiveData<Items>? = null
     var OrdersByIdResponesLD : MutableLiveData<DetailsByOrderId>? = null
     var ItemIndex = MutableLiveData<Int>()
+    var ProductDetailsResponesLD : MutableLiveData<ProductDetails>? = null
+
 
     init {
         subCategoriesResponseLD = MutableLiveData()
@@ -140,7 +142,7 @@ class MainViewModel(apiService: APIServices) : ViewModel() {
         ItemsResponesLD = MutableLiveData()
         OrdersByIdResponesLD= MutableLiveData()
         ItemIndex = MutableLiveData()
-
+        ProductDetailsResponesLD= MutableLiveData()
 
 
     }
@@ -163,7 +165,11 @@ class MainViewModel(apiService: APIServices) : ViewModel() {
     fun  Get_Items(id : Int){
         DateRepoCompnay.GetItemsData(id,ItemsResponesLD)
     }
+////////////getProductDetails
 
+    fun  getProductDetails(item_id : Int,user_id: Int){
+        DateRepoCompnay.getProductDetails(item_id,user_id,ProductDetailsResponesLD)
+    }
     ///AddOrder
     fun AddOrder(branch_id:Int,table_id:Int,total:Int,typeorder:Int,user_id:Int,waiter_id:Int) {
         DateRepoCompnay.AddOrder(branch_id,table_id,total,typeorder,user_id,waiter_id,AddOrderResponseLD)
@@ -180,6 +186,7 @@ class MainViewModel(apiService: APIServices) : ViewModel() {
 
         ItemData.postValue(dataX)
     }
+
     fun  SendSearhKey(id : String){
         SearchKey.postValue(id)
     }

@@ -2,9 +2,12 @@ package com.example.dinein.presentation.searchfragment
 
 import android.content.Context
 import android.view.LayoutInflater
+import android.view.View
 import android.view.ViewGroup
 import android.widget.Filter
 import android.widget.Filterable
+import android.widget.FrameLayout
+import android.widget.Toast
 import androidx.databinding.DataBindingUtil
 import androidx.recyclerview.widget.RecyclerView
 
@@ -23,7 +26,7 @@ class SearchAdapter (var viewModel: MainViewModel, var context : Context?, var d
     private val allData: ArrayList<SearchData> = data as ArrayList<SearchData>
     private var search: ArrayList<SearchData> = data as ArrayList<SearchData>
 
-
+      var not : FrameLayout ? = null
 
     override fun getItemCount(): Int {
         return  search.size
@@ -34,6 +37,8 @@ class SearchAdapter (var viewModel: MainViewModel, var context : Context?, var d
                 val charString = charSequence.toString()
                 if (charString.isEmpty()) {
                 search.clear()
+                    Toast.makeText(context, "Not Found", Toast.LENGTH_SHORT).show();
+
                 } else {
                     val filteredList = ArrayList<SearchData>()
                     for (row in allData) {
@@ -56,6 +61,7 @@ class SearchAdapter (var viewModel: MainViewModel, var context : Context?, var d
     }
     override fun onBindViewHolder(p0: CustomViewHolder, p1: Int) {
         p0.bind(viewModel,context,search.get(p1))
+
 
 
     }

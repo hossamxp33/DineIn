@@ -16,16 +16,16 @@ import com.example.dinein.presentation.home.items_fragment.Items_Fragment
 import com.example.dinein.presentation.home.subcats_frament.SubCats_Fragment
 import com.example.dinein.presentation.home.viewmodel.MainViewModel
 
-class CategoriesAdapter (var subCatViewModel: SubCategoryModel, var viewModel: MainViewModel, var context : Context?, var data:List<Data>) : RecyclerView.Adapter<CustomViewHolder>() {
+class CategoriesAdapter (var viewModel: MainViewModel, var context : Context?, var data:List<Data>) : RecyclerView.Adapter<CustomViewHolder>() {
     override fun getItemCount(): Int {
 
         return  data.size
     }
 
     override fun onBindViewHolder(p0: CustomViewHolder, p1: Int) {
-        p0.bind(subCatViewModel,viewModel,context,data.get(p1))
+        p0.bind(viewModel,context,data.get(p1))
         p0.binding.name.setOnClickListener {
-            subCatViewModel.SwtichingCategories(p1)
+            viewModel.SwtichingCategories(p1)
             //  bundle.putParcelable("cliObj" ,clients[position] )
             val frag = SubCats_Fragment()
             ( context as MainActivity).supportFragmentManager.beginTransaction().setCustomAnimations(R.anim.ttb, 0, 0,0)
@@ -55,7 +55,7 @@ class CustomViewHolder (
     public val binding: CatsItemBinding
 ) : RecyclerView.ViewHolder(binding.root){
 
-    fun bind(subCatViewModel: SubCategoryModel,viewModel: MainViewModel, context: Context?, data: Data) {
+    fun bind(viewModel: MainViewModel, context: Context?, data: Data) {
 
         binding.data = data
         binding.context = context as MainActivity?

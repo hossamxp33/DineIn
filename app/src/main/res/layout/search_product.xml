@@ -73,7 +73,7 @@
             android:layout_height="wrap_content"
             android:textColor="@color/black"
             android:textSize="24dp"
-            android:text="لا يوجد شركات بهذه المدينة "
+            android:text="لا يوجد منتجات بهذا الاسم "
             android:layout_gravity="center" />
 
     </FrameLayout>

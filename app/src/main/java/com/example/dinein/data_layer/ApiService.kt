@@ -19,6 +19,15 @@ interface APIServices {
     fun GetTablesData():
             Observable <TablesData>
 
+/////////////  Product Details
+
+    @GET("items/view/{item_id}/{user_id}.json")
+    abstract fun getProductDetails(
+
+        @Path("item_id") item_id: Int,
+        @Path("user_id") user_id: Int
+    ): Observable<ProductDetails>
+
 
     @GET("items/getitemsbytype/{id}/1.json")/*{company_id}*/
     fun GetItemsData(@Path("id") id: Int):

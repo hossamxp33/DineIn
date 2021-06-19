@@ -6,6 +6,9 @@
     <color name="white">#ffffffff</color>
     <color name="gray">#ff808080</color>
     <color name="black">#000</color>
+    <color name="product_back">#e6eaed</color>
+
+
     <color name="viewcolor">#EDF0F2</color>
     <color name="textcolorinnenu">#ff808080</color>
     <color name="lightgrey">#bfbfbf</color>
@@ -20,6 +23,8 @@
     <color name="notfy_home3">#DC214C</color>
     <color name="text_numbers">#DC214C</color>
     <color name="colortwo">#DC214C</color>
+    <color name="duskYellow">#FFEB3B</color>
+
     <color name="colorbackinorderconf">#D91368</color>
     <color name="darkgrey">#514F4F</color>
     <color name="lightPurple">#D482DF</color>

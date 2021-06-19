@@ -70,6 +70,8 @@
             android:background="@drawable/bluereduisbackground"
             android:text="تفاصيل"
             android:padding="5dp"
+            android:onClick="@{() -> listener.SwitchToDetails(Context,data.id)}"
+
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
